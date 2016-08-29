@@ -15,14 +15,14 @@
 
 open your terminal, type: 
 ```sh
-$ ssh your_cs_account@sledge.cs.ucr.edu 
+$ ssh your_cs_account@server.cs.edu
 $ password:*
 ```
 
 Example
 
 ```sh
-$ ssh sjin010@sledge.cs.ucr.edu
+$ ssh user@server.cs.edu
 ```
 
 ---
@@ -36,11 +36,6 @@ In the tutorial, instead of typing gdb, you should type:
 $ gdb q -iex "set auto-load safe-path /home/csgrads/sjin010/xv6-public/"
 ```
 
-change the directory 
-
-```
-/home/csgrads/sjin010/xv6-public/
-```
 
 to your working directory.   Find your working path, type 
 ```
@@ -66,11 +61,6 @@ Then kill that process
 
 ```sh
 $ kill -9 PID
-```
-
-#### Best way to get xv6 source code
-```sh
-$ git clone https://github.com/guilleiguaran/xv6.git
 ```
 
 ---
