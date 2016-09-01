@@ -22,6 +22,11 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int clone(int stack, int size,int routine, int arg);
+void texit(void) __attribute__((noreturn));
+void tsleep(void);
+void twakeup(int);
+void thread_yield(void);
 
 // ulib.c
 int stat(char*, struct stat*);
@@ -36,3 +41,10 @@ void* memset(void*, int, uint);
 void* malloc(uint);
 void free(void*);
 int atoi(const char*);
+int random(int);
+
+void *thread_create(void (*start_routine)(void*), void *arg);
+// lock util
+void lock_init(lock_t *lock);
+void lock_acquire(lock_t *lock);
+void lock_release(lock_t *lock);

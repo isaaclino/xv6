@@ -16,7 +16,8 @@ struct cpu {
   struct proc *proc;           // The currently-running process.
 };
 
-extern struct cpu cpus[NCPU];
+extern struct cpu cpus[8];
+//extern struct cpu cpus[NCPU];
 extern int ncpu;
 
 // Per-CPU variables, holding pointers to the
@@ -63,9 +64,11 @@ struct proc {
   struct context *context;     // swtch() here to run process
   void *chan;                  // If non-zero, sleeping on chan
   int killed;                  // If non-zero, have been killed
-  struct file *ofile[NOFILE];  // Open files
+  struct file *ofile[16];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+  uint *pstack;
+  int isthread;
 };
 
 // Process memory is laid out contiguously, low addresses first:

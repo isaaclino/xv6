@@ -98,6 +98,11 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
+extern int sys_clone(void);
+extern int sys_texit(void);
+extern int sys_tsleep(void);
+extern int sys_twakeup(void);
+extern int sys_thread_yield(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -121,6 +126,11 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+[SYS_clone]   sys_clone,
+[SYS_texit]   sys_texit,
+[SYS_tsleep]   sys_tsleep,
+[SYS_twakeup]   sys_twakeup,
+[SYS_thread_yield]   sys_thread_yield, 
 };
 
 void

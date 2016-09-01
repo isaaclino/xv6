@@ -13,10 +13,31 @@ sys_fork(void)
 }
 
 int
+sys_clone(){
+    int stack;
+    int size;
+    int routine;
+    int arg;
+
+    if(argint(1,&size) < 0 || size <=0 || argint(0,&stack) <0 ||
+            argint(2,&routine) < 0 || argint(3,&arg)<0){
+        return -1;
+    }
+    return clone(stack,size,routine,arg);
+}
+
+int
 sys_exit(void)
 {
   exit();
   return 0;  // not reached
+}
+
+int
+sys_texit(void)
+{
+    texit();
+    return 0;
 }
 
 int
@@ -87,4 +108,31 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+int
+sys_tsleep(void)
+{
+    tsleep();
+    return 0;
+}
+
+int 
+sys_twakeup(void)
+{
+    int tid;
+    if(argint(0,&tid) < 0){
+        return -1;
+    }
+        twakeup(tid);
+        return 0;
+}
+
+// Part 1.2 implementation
+void
+sys_thread_yield(void)
+{
+thread_yield();	
+
+//	return 0;
 }

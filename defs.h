@@ -115,8 +115,12 @@ void            sleep(void*, struct spinlock*);
 void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
+void            twakeup(int);
+void            tsleep(void);
 void            yield(void);
-
+int             clone(int stack, int size,int routine,int arg);
+void            texit(void);
+void 		thread_yield(void);
 // swtch.S
 void            swtch(struct context**, struct context*);
 
